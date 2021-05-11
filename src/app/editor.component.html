@@ -1,0 +1,78 @@
+<div class="layout-editor" [ngClass]="{'layout-editor-active': active}">
+    <div class="layout-editor-panel">
+        <div class="layout-editor-top">
+            <img src="assets/images/logo.svg" class="logo" alt="topbar-logo">
+            <div>
+                <a class="action-icon action-restart p-button-raised" pTooltip="Restart" tooltipPosition="bottom" (click)="showRestartDialog($event)">
+                    <i class="pi pi-replay"></i>
+                </a>
+                <a class="action-icon action-download p-button-raised p-ml-2" pTooltip="Download" tooltipPosition="bottom" (click)="download($event)">
+                    <i class="pi pi-download"></i>
+                </a>
+            </div>
+        </div>
+
+        <p>Visual editor is for quick prototyping, for advanced editing such as implementing your style guide,
+            refer to the <a href="https://www.primefaces.org/designer/api/primeng/10.0.0/">SASS API</a> with 500+ variables.</p>
+
+        <h6>Component Scale</h6>
+        <div class="config-scale">
+            <button icon="pi pi-minus" type="button" pButton pRipple (click)="decrementScale()" class="p-button-text" [disabled]="scale === scales[0]"></button>
+            <i class="pi pi-circle-on" *ngFor="let s of scales" [ngClass]="{'scale-active': s === scale}"></i>
+            <button icon="pi pi-plus" type="button" pButton pRipple (click)="incrementScale()" class="p-button-text" [disabled]="scale === scales[scales.length - 1]"></button>
+        </div>
+
+        <div class="p-d-flex p-mt-4">
+            <div>
+                <h6>Input Style</h6>
+                <div class="p-formgroup-inline">
+                    <div class="p-field-radiobutton">
+                        <p-radioButton inputId="input_outlined" name="inputstyle" value="outlined" [ngModel]="inputStyle" (ngModelChange)="onInputStyleChange($event)"></p-radioButton>
+                        <label for="input_outlined">Outlined</label>
+                    </div>
+                    <div class="p-field-radiobutton">
+                        <p-radioButton inputId="input_filled" name="inputstyle" value="filled" [ngModel]="inputStyle" (ngModelChange)="onInputStyleChange($event)"></p-radioButton>
+                        <label for="input_filled">Filled</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-ml-auto">
+                <h6>Ripple Effect</h6>
+                <p-inputSwitch [ngModel]="ripple" (onChange)="onRippleChange($event)"></p-inputSwitch>
+            </div>
+        </div>
+
+        <div *ngFor="let category of categories" class="editor-category">
+            <h6 class="p-mt-4 p-mb-2">{{category.label}}</h6>
+            <div *ngFor="let option of category.options" class="editor-field">
+                <label [attr.for]="option.name">{{option.description}}</label>
+                <input *ngIf="option.type === 'color'" type="color" [attr.id]="option.name" [attr.name]="option.name" [(ngModel)]="variables[option.name]" (change)="compile()">
+                <input *ngIf="option.type === 'text'" type="text" [attr.id]="option.name" [attr.name]="option.name" [attr.size]="option.size" [(ngModel)]="variables[option.name]" (change)="compile()">
+            </div>
+        </div>
+    </div>
+
+    <p-dialog [(visible)]="restartDialog" [style]="{width: '450px'}" header="Restart" [modal]="true">
+        <div class="p-d-flex p-ai-center">
+            <i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem"></i>
+            <span>Are you sure you want to discard your changes?</span>
+        </div>
+        <ng-template pTemplate="footer">
+            <button pButton pRipple type="button" label="No" icon="pi pi-times" class="p-button-text" (click)="restartDialog = false"></button>
+            <button pButton pRipple type="text" label="Yes" icon="pi pi-check" class="p-button-text" (click)="restartEditor()"></button>
+        </ng-template>
+    </p-dialog>
+
+    <p-dialog [(visible)]="downloadDialog" [style]="{width: '450px'}" header="Download" [modal]="true">
+        <div class="p-d-flex p-ai-center">
+            <i class="pi pi-exclamation-circle p-mr-3" style="font-size: 2rem"></i>
+            <span>A designer license is required to download this theme.</span>
+        </div>
+        <ng-template pTemplate="footer">
+            <button pButton pRipple type="button" label="Learn More" icon="pi pi-info-circle" class="p-button-text" (click)="navigateToDesigner()"></button>
+            <button pButton pRipple type="button" label="Buy Now" icon="pi pi-shopping-cart" class="p-button-text" (click)="navigateToStore()"></button>
+        </ng-template>
+    </p-dialog>
+
+</div>

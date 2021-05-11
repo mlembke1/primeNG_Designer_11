@@ -1,0 +1,61 @@
+<div class="layout-intro">
+    <h2 class="intro-title">
+        <span @status *ngIf="!theme">Choose a Base Theme</span>
+        <span @status *ngIf="theme">Setting Up... <i @icon class="pi pi-cog pi-spin"></i></span>
+    </h2>
+    
+    <div class="theme-options">
+        <div class="theme-option" [ngClass]="{'theme-option-leave': theme && theme !== 'primeone_light'}">
+            <a (click)="chooseTheme('primeone_light')" pTooltip="PrimeOne Light" tooltipPosition="bottom" tooltipStyleClass="intro">
+                <img src="assets/images/themes/saga-blue.png">
+            </a>
+        </div>
+        <div class="theme-option" [ngClass]="{'theme-option-leave': theme && theme !== 'primeone_dim'}">
+            <a (click)="chooseTheme('primeone_dim')" pTooltip="PrimeOne Dim" tooltipPosition="bottom" tooltipStyleClass="intro">
+                <img src="assets/images/themes/vela-blue.png">
+            </a>
+        </div>
+        <div class="theme-option" [ngClass]="{'theme-option-leave': theme && theme !== 'primeone_dark'}">
+            <a (click)="chooseTheme('primeone_dark')" pTooltip="PrimeOne Dark" tooltipPosition="bottom" tooltipStyleClass="intro">
+                <img src="assets/images/themes/arya-blue.png">
+            </a>
+        </div>
+        <div class="theme-option" [ngClass]="{'theme-option-leave': theme && theme !== 'bootstrap_light'}">
+            <a (click)="chooseTheme('bootstrap_light')" pTooltip="Bootstrap Light" tooltipPosition="bottom" tooltipStyleClass="intro">
+                <img src="assets/images/themes/bootstrap4-light-blue.svg">
+            </a>
+        </div>
+        <div class="theme-option" [ngClass]="{'theme-option-leave': theme && theme !== 'bootstrap_dark'}">
+            <a (click)="chooseTheme('bootstrap_dark')" pTooltip="Bootstrap Dark" tooltipPosition="bottom" tooltipStyleClass="intro">
+                <img src="assets/images/themes/bootstrap4-dark-blue.svg">
+            </a>
+        </div>
+    </div>
+    <div class="theme-options">
+        <div class="theme-option" [ngClass]="{'theme-option-leave': theme && theme !== 'md_light'}">
+            <a (click)="chooseTheme('md_light')" style="background: #3c4db7" pTooltip="Material Light" tooltipPosition="bottom" tooltipStyleClass="intro">
+                <img src="assets/images/themes/md-light-indigo.svg">
+            </a>
+        </div>
+        <div class="theme-option" [ngClass]="{'theme-option-leave': theme && theme !== 'md_dark'}">
+            <a (click)="chooseTheme('md_dark')" style="background: #3c4db7" pTooltip="Material Dark" tooltipPosition="bottom" tooltipStyleClass="intro">
+                <img src="assets/images/themes/md-dark-indigo.svg">
+            </a>
+        </div>
+        <div class="theme-option" [ngClass]="{'theme-option-leave': theme && theme !== 'fluent_light'}">
+            <a (click)="chooseTheme('fluent_light')" pTooltip="Fluent Light" tooltipPosition="bottom" tooltipStyleClass="intro">
+                <img src="assets/images/themes/fluent-light.png">
+            </a>
+        </div>
+        <div class="theme-option" [ngClass]="{'theme-option-leave': theme && theme !== 'soho_light'}">
+            <a (click)="chooseTheme('soho_light')" pTooltip="Soho Light" tooltipPosition="bottom" tooltipStyleClass="intro">
+                <img src="assets/images/themes/soho-light.png">
+            </a>
+        </div>
+        <div class="theme-option" [ngClass]="{'theme-option-leave': theme && theme !== 'soho_dark'}">
+            <a (click)="chooseTheme('soho_dark')" pTooltip="Soho Dark" tooltipPosition="bottom" tooltipStyleClass="intro">
+                <img src="assets/images/themes/soho-dark.png">
+            </a>
+        </div>
+    </div>
+</div>

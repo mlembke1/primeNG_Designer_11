@@ -1,0 +1,9 @@
+<div class="layout-topbar">
+    <a class="action-icon menu-icon" (click)="onMenuButtonClick($event)" *ngIf="!codeEditor">
+        <i class="pi pi-bars"></i>
+    </a>
+    <a class="action-icon home-icon" routerLink="/" pTooltip="Home" tooltipPosition="bottom" *ngIf="router.url !== '/'">
+        <i class="pi pi-arrow-left"></i>
+    </a>
+    <a class="route-link" routerLink="/documentation">Get Started</a>
+</div>

@@ -1,0 +1,10 @@
+$primaryLightColor: rgba(136, 60, 174, 0.5);
+$primaryColor: #883cae;
+$primaryDarkColor: #7a38a7;
+$primaryDarkerColor: #68329e;
+$primaryTextColor: #ffffff;
+
+$highlightBg: $primaryColor;
+$highlightTextColor: $primaryTextColor;
+
+@import '../_variables_light';

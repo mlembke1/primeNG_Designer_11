@@ -1,0 +1,11 @@
+li {
+    line-height: 1.5;
+}
+
+a {
+    color: #2196F3;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

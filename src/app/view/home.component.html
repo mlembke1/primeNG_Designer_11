@@ -1,0 +1,544 @@
+<div class="p-grid">
+    <div class="p-col-12 p-md-6 p-fluid">
+        <div class="card">
+            <h5>InputText</h5>
+            <div class="p-grid p-formgrid">
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <input pInputText type="text" placeholder="Default">
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <input pInputText type="text" placeholder="Disabled" [disabled]="true">
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <input pInputText type="text" placeholder="Invalid" class="p-error">
+                </div>
+            </div>
+
+            <h5>Icons</h5>
+            <div class="p-grid p-formgrid">
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-user"></i>
+                        <input pInputText type="text" placeholder="Username">
+                    </span>
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <span class="p-input-icon-right">
+                        <input pInputText type="text" placeholder="Search">
+                        <i class="pi pi-search"></i>
+                    </span>
+                </div>
+                <div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
+                    <span class="p-input-icon-left p-input-icon-right">
+                        <i class="pi pi-user"></i>
+                        <input pInputText type="text" placeholder="Search">
+                        <i class="pi pi-search"></i>
+                    </span>
+                </div>
+            </div>
+
+            <h5>Float Label</h5>
+            <span class="p-float-label">
+                <input pInputText id="username" type="text" [(ngModel)]="floatValue">
+                <label for="username">Username</label>
+            </span>
+
+            <h5>Textarea</h5>
+            <textarea pInputTextarea placeholder="Your Message" [autoResize]="false" rows="3" cols="30"></textarea>
+
+            <h5>AutoComplete</h5>
+            <p-autoComplete [(ngModel)]="selectedCountry" [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)" field="name" [minLength]="1"></p-autoComplete>
+
+            <h5>Calendar</h5>
+            <p-calendar [showIcon]="true" [showButtonBar]="true" [(ngModel)]="calendarValue"></p-calendar>
+
+            <h5>InputNumber</h5>
+            <p-inputNumber [(ngModel)]="inputNumberValue" [showButtons]="true" mode="decimal"></p-inputNumber>
+
+            <h5>Chips</h5>
+            <p-chips [(ngModel)]="chipsValue"></p-chips>
+        </div>
+
+        <div class="card">
+            <h5>Slider</h5>
+            <input type="text" pInputText [(ngModel)]="sliderValue" readonly>
+            <p-slider [(ngModel)]="sliderValue"></p-slider>
+
+            <h5>Rating</h5>
+            <p-rating [(ngModel)]="ratingValue"></p-rating>
+
+            <h5>Input Switch</h5>
+            <p-inputSwitch [(ngModel)]="switchValue"></p-inputSwitch>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-6">
+        <div class="card">
+            <h5>RadioButton</h5>
+            <div class="p-grid">
+                <div class="p-col-12 p-md-4">
+                    <div class="p-field-radiobutton">
+                        <p-radioButton inputId="option1" name="option" value="Option 1" [(ngModel)]="radioValue"></p-radioButton>
+                        <label for="option1">Option 1</label>
+                    </div>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <div class="p-field-radiobutton">
+                        <p-radioButton inputId="option2" name="option" value="Option 2" [(ngModel)]="radioValue"></p-radioButton>
+                        <label for="option2">Option 2</label>
+                    </div>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <div class="p-field-radiobutton">
+                        <p-radioButton inputId="option3" name="option" value="Option 3" [(ngModel)]="radioValue"></p-radioButton>
+                        <label for="option3">Option 3</label>
+                    </div>
+                </div>
+            </div>
+
+            <h5>Checkbox</h5>
+            <div class="p-grid">
+                <div class="p-col-12 p-md-4">
+                    <div class="p-field-checkbox">
+                        <p-checkbox inputId="checkOption1" name="option" value="Option 1" [(ngModel)]="checkboxValue"></p-checkbox>
+                        <label for="checkOption1">Option 1</label>
+                    </div>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <div class="p-field-checkbox">
+                        <p-checkbox inputId="checkOption2" name="option" value="Option 2" [(ngModel)]="checkboxValue"></p-checkbox>
+                        <label for="checkOption2">Option 2</label>
+                    </div>
+                </div>
+                <div class="p-col-12 p-md-4">
+                    <div class="p-field-checkbox">
+                        <p-checkbox inputId="checkOption3" name="option" value="Option 3" [(ngModel)]="checkboxValue"></p-checkbox>
+                        <label for="checkOption3">Option 3</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-fluid">
+            <h5>Listbox</h5>
+            <p-listbox [options]="cities" [(ngModel)]="listboxValue" optionLabel="name" [checkbox]="true" [filter]="true" [multiple]="true"></p-listbox>
+
+            <h5>Dropdown</h5>
+            <p-dropdown [options]="cities" [(ngModel)]="dropdownValue" optionLabel="name" placeholder="Select"></p-dropdown>
+
+            <h5>MultiSelect</h5>
+            <p-multiSelect [options]="multiselectOptions" [filter]="false" [(ngModel)]="multiselectValue" placeholder="Select" optionLabel="name" display="chip"></p-multiSelect>
+        </div>
+
+        <div class="card p-fluid">
+            <h5>ToggleButton</h5>
+            <p-toggleButton [(ngModel)]="toggleValue" onLabel="Yes" offLabel="No"></p-toggleButton>
+
+            <h5>SelectButton</h5>
+            <p-selectButton [(ngModel)]="selectButtonValue1" [options]="selectButtonOptions" optionLabel="name"></p-selectButton>
+
+            <h5>SelectButton - Multiple</h5>
+            <p-selectButton [(ngModel)]="selectButtonValue2" [options]="selectButtonOptions" optionLabel="name" [multiple]="true"></p-selectButton>
+        </div>
+    </div>
+
+    <div class="p-col-12">
+        <div class="card">
+            <h5>Buttons</h5>
+            <button type="button" pButton pRipple label="Submit" class="p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-check" class="p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Submit" icon="pi pi-check" class="p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Submit" icon="pi pi-check" iconPos="right" class="p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Disabled" disabled="disabled" class="p-mr-2 p-mb-2"></button>
+        
+            <h5>Severities</h5>
+            <button type="button" pButton pRipple label="Primary" class="p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Secondary" class="p-button-secondary p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Success" class="p-button-success p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Info" class="p-button-info p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Warning" class="p-button-warning p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Help" class="p-button-help p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Danger" class="p-button-danger p-mb-2"></button>
+
+            <h5>Raised Buttons</h5>
+            <button type="button" pButton pRipple label="Primary" class="p-button-raised p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Secondary" class="p-button-raised p-button-secondary p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Success" class="p-button-raised p-button-success p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Info" class="p-button-raised p-button-info p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Warning" class="p-button-raised p-button-warning p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Help" class="p-button-raised p-button-help p-mr-2 p-mb-2"></button>
+            <button type="button"pButton pRipple label="Danger" class="p-button-raised p-button-danger p-mb-2"></button>
+
+            <h5>Rounded Buttons</h5>
+            <button type="button" pButton pRipple label="Primary" class="p-button-rounded p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Secondary" class="p-button-rounded p-button-secondary p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Success" class="p-button-rounded p-button-success p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Info" class="p-button-rounded p-button-info p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Warning" class="p-button-rounded p-button-warning p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Help" class="p-button-rounded p-button-help p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Danger" class="p-button-rounded p-button-danger p-mb-2"></button>
+
+            <h5>Text Buttons</h5>
+            <button type="button" pButton pRipple label="Primary" class="p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Secondary" class="p-button-secondary p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Success" class="p-button-success p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Info" class="p-button-info p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Warning" class="p-button-warning p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Help" class="p-button-help p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Danger" class="p-button-danger p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Plain" class="p-button-text p-button-plain p-mb-2"></button>
+
+            <h5>Raised Text Buttons</h5>
+            <button type="button" pButton pRipple label="Primary" class="p-button-raised p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Secondary" class="p-button-raised p-button-secondary p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Success" class="p-button-raised p-button-success p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Info" class="p-button-raised p-button-info p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Warning" class="p-button-raised p-button-warning p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Help" class="p-button-raised p-button-help p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Danger" class="p-button-raised p-button-danger p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Plain" class="p-button-raised p-button-text p-button-plain p-mb-2"></button>
+
+            <h5>Outlined Buttons</h5>
+            <button type="button" pButton pRipple label="Primary" class="p-button-outlined p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Secondary" class="p-button-outlined p-button-secondary p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Success" class="p-button-outlined p-button-success p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Info" class="p-button-outlined p-button-info p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Warning" class="p-button-outlined p-button-warning p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Help" class="p-button-outlined p-button-help p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Danger" class="p-button-outlined p-button-danger p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple label="Plain" class="p-button-outlined p-button-plain p-mb-2"></button>
+
+            <h5>Rounded Icon Buttons</h5>
+            <button type="button" pButton pRipple icon="pi pi-check" class="p-button-rounded p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-bookmark" class="p-button-rounded p-button-secondary p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-search" class="p-button-rounded p-button-success p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-user" class="p-button-rounded p-button-info p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-bell" class="p-button-rounded p-button-warning p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-heart" class="p-button-rounded p-button-help p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-times" class="p-button-rounded p-button-danger p-mb-2"></button>
+
+            <h5>Rounded Text Icon Buttons</h5>
+            <button type="button" pButton pRipple icon="pi pi-check" class="p-button-rounded p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-bookmark" class="p-button-rounded p-button-secondary p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-search" class="p-button-rounded p-button-success p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-user" class="p-button-rounded p-button-info p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-bell" class="p-button-rounded p-button-warning p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-heart" class="p-button-rounded p-button-help p-button-text p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text p-mr-2 p-mb-2"></button>
+
+            <h5>Rounded and Outlined Icon Buttons</h5>
+            <button type="button" pButton pRipple icon="pi pi-check" class="p-button-rounded p-button-outlined p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-bookmark" class="p-button-rounded p-button-secondary p-button-outlined p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-search" class="p-button-rounded p-button-success p-button-outlined p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-user" class="p-button-rounded p-button-info p-button-outlined p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-bell" class="p-button-rounded p-button-warning p-button-outlined p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-heart" class="p-button-rounded p-button-help p-button-outlined p-mr-2 p-mb-2"></button>
+            <button type="button" pButton pRipple icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined p-mb-2"></button>
+
+            <h5>Badges</h5>
+            <p-button label="Emails" badge="8" styleClass="p-mr-2" ></p-button>
+            <p-button label="Messages" icon="pi pi-users" styleClass="p-button-warning" badge="8" badgeClass="p-badge-danger" ></p-button>
+
+            <h5>Button Set</h5>
+            <span class="p-buttonset">
+                <button type="button" pButton pRipple label="Save" icon="pi pi-check"></button>
+                <button type="button" pButton pRipple label="Delete" icon="pi pi-trash"></button>
+                <button type="button" pButton pRipple label="Cancel" icon="pi pi-times"></button>
+            </span>
+        </div>
+    </div>
+
+    <div class="p-col-12">
+        <div class="card">
+            <p-table #dt [value]="customers" [(selection)]="selectedCustomers" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+                [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+                [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [filterDelay]="0" [globalFilterFields]="['name','country.name','representative.name','status']">
+                <ng-template pTemplate="caption">
+                    <div class="table-header">
+                        List of Customers
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                        <th pSortableColumn="country.name">Country <p-sortIcon field="country.name"></p-sortIcon></th>
+                        <th pSortableColumn="representative.name">Representative <p-sortIcon field="representative.name"></p-sortIcon></th>
+                        <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
+                        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+                        <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                        <th style="width: 8rem"></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-customer>
+                    <tr class="p-selectable-row">
+                        <td>
+                            <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+                        </td>
+                        <td>
+                            <span class="p-column-title">Name</span>
+                            {{customer.name}}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Country</span>
+                            <img src="assets/demo/images/flag/flag_placeholder.png" [class]="'flag flag-' + customer.country.code" width="30">
+                            <span class="image-text">{{customer.country.name}}</span>
+                        </td>
+                        <td>
+                            <span class="p-column-title">Representative</span>
+                            <img [alt]="customer.representative.name" src="assets/demo/images/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle" />
+                            <span class="image-text">{{customer.representative.name}}</span>
+                        </td>
+                        <td>
+                            <span class="p-column-title">Date</span>
+                            {{customer.date}}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Status</span>
+                            <span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
+                        </td>
+                        <td>
+                            <span class="p-column-title">Activity</span>
+                            <p-progressBar [value]="customer.activity" [showValue]="false" [style]="{height:'4px'}"></p-progressBar>
+                        </td>
+                        <td style="text-align: center">
+                            <button pButton type="button" icon="pi pi-cog"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="8">No customers found.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6">
+        <div class="card">
+            <h5>AccordionPanel</h5>
+            <p-accordion>
+                <p-accordionTab header="Header I" [selected]="true">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>    
+                </p-accordionTab>
+                <p-accordionTab header="Header II">
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                                voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
+                </p-accordionTab>
+                <p-accordionTab header="Header III">
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
+                                cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                                Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+                </p-accordionTab>
+            </p-accordion>
+        </div>
+        <div class="card">
+            <h5>TabView</h5>
+            <p-tabView>
+                <p-tabPanel header="Header I">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>    
+                </p-tabPanel>
+                <p-tabPanel header="Header II">
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                        voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
+                </p-tabPanel>
+                <p-tabPanel header="Header III">
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
+                        cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                        Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>    
+                </p-tabPanel>
+            </p-tabView>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-6">
+        <div class="card">
+            <h5>Panel</h5>
+            <p-panel header="Header" [toggleable]="true">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </p-panel>
+        </div>
+        <div class="card">
+            <h5>Fieldset</h5>
+            <p-fieldset legend="Legend" [toggleable]="true">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </p-fieldset>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-3">
+        <div class="card p-fluid">
+            <h5>Overlay Panel</h5>
+            <p-button [label]="selectedProduct ? selectedProduct.name : 'Choose'" icon="pi pi-search" (click)="op.toggle($event)"></p-button>
+
+            <p-overlayPanel #op [showCloseIcon]="true" [style]="{width: '450px'}">
+                <ng-template pTemplate>
+                    <p-table [value]="products" selectionMode="single" [(selection)]="selectedProduct" (onRowSelect)="onRowSelect($event, op)" [paginator]="true" [rows]="5">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
+                                <th>Image</th>
+                                <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-product>
+                            <tr [pSelectableRow]="rowData">
+                                <td>{{product.name}}</td>
+                                <td><img src="assets/demo/images/product/{{product.image}}" [attr.alt]="product.image" class="product-image" /></td>
+                                <td>{{product.price}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </ng-template>
+            </p-overlayPanel>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-3">
+        <div class="card p-fluid">
+            <h5>Dialog</h5>
+            <p-dialog header="Dialog" [(visible)]="displayDialog" [style]="{width: '50vw'}" [modal]="true">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <ng-template pTemplate="footer">
+                    <button pButton pRipple label="Dismiss" (click)="closeDialog()" icon="pi pi-check" class="p-button-text"></button>
+                </ng-template>
+            </p-dialog>
+            <button pButton pRipple label="Show" icon="pi pi-external-link" class="p-button-secondary" (click)="openDialog()"></button>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-3">
+        <div class="card p-fluid">
+            <h5>Confirm Popup</h5>
+            <button (click)="showConfirmPopup($event)" pButton icon="pi pi-check" label="Confirm" class="p-button-success"></button>
+
+            <p-confirmPopup key="popup"></p-confirmPopup>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-3">
+        <div class="card p-fluid">
+            <h5>Confirm Dialog</h5>
+            <p-confirmDialog [style]="{width: '30vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text" key="dialog"></p-confirmDialog>
+            <p-button (click)="showConfirmDialog()" icon="pi pi-check" label="Confirm" styleClass="p-button-help"></p-button>
+        </div>
+    </div>
+    <div class="p-col-12">
+        <div class="card card-w-title">
+            <h5>Menubar</h5>
+            <p-menubar [model]="tieredMenuItems">
+                <ng-template pTemplate="end">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText placeholder="Search">
+                    </span>
+                </ng-template>
+            </p-menubar>
+        </div>
+    </div>
+    <div class="p-col-12 p-md-4">
+        <div class="card">
+            <h5>Tiered Menu</h5>
+            <p-tieredMenu [model]="tieredMenuItems"></p-tieredMenu>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-4">
+        <div class="card">
+            <h5>Plain Menu</h5>
+            <p-menu [model]="menuItems"></p-menu>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-md-4">
+        <div class="card">
+            <h5>Overlay Menu</h5>
+
+            <p-menu #menu [popup]="true" [model]="menuItems"></p-menu>
+            <button type="button" pButton icon="pi pi-angle-down" label="Options" (click)="menu.toggle($event)" style="width: auto"></button>
+        </div>
+
+        <div class="card">
+            <h5>ContextMenu</h5>
+            <div #cmtext>Right click to display.</div>
+            <p-contextMenu [model]="contextMenuItems" [target]="cmtext"></p-contextMenu>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-lg-6">
+        <div class="card">
+            <h5>Messages</h5>
+
+            <p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-lg-6">
+        <div class="card">
+            <h5>Toast</h5>
+
+            <button pButton pRipple (click)="showToast('info')" label="Info" class="p-button-info p-mr-2 p-mb-2"></button>
+            <button pButton pRipple (click)="showToast('success')" label="Success" class="p-button-success p-mr-2 p-mb-2"></button>
+            <button pButton pRipple (click)="showToast('warn')" label="Warn" class="p-button-warning p-mr-2 p-mb-2"></button>
+            <button pButton pRipple (click)="showToast('error')" label="Error" class="p-button-danger p-mb-2"></button>
+        </div>
+        <div class="card">
+            <h5>Timeline</h5>
+            <p-timeline [value]="events" [align]="'alternate'">
+                <ng-template pTemplate="content" let-event>
+                    {{event.status}}
+                </ng-template>
+            </p-timeline>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-lg-8">
+        <div class="card">
+            <h5>Inline Message</h5>
+            <p-message severity="info" text="Message Content" class="p-mr-2"></p-message>
+            <p-message severity="success" text="Message Content" class="p-mr-2"></p-message>  
+            <p-message severity="warn" text="Message Content" class="p-mr-2"></p-message>  
+            <p-message severity="error" text="Message Content" class="p-mr-2"></p-message>
+
+            <div class="p-mt-4">
+                <input type="text" pInputText placeholder="Username" class="ng-dirty ng-invalid p-invalid p-mr-2">
+                <p-message severity="error" text="Field is required"></p-message>
+            </div>
+
+            <div class="p-mt-4">
+                <input type="text" pInputText placeholder="Email" class="ng-dirty ng-invalid p-invalid p-mr-2">
+                <p-message severity="error"></p-message>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-col-12 p-lg-4">
+        <div class="card">
+            <h5>Helper Text</h5>
+            <div class="p-field p-fluid">
+                <label for="username2">Username</label>
+                <input pInputText id="username2" type="text" class="p-error" aria-describedby="username-help">
+                <small id="username-help" class="p-error">Enter your username to reset your password.</small>
+            </div>
+        </div>
+    </div>
+</div>
